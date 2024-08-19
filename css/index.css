@@ -2931,6 +2931,9 @@ table {
   border-collapse: collapse;
   empty-cells: show;
 }
+table tr:nth-child(even) {
+  background-color: var(--anzhiyu-secondbg);
+}
 table thead {
   background: var(--anzhiyu-secondbg);
 }
@@ -10925,12 +10928,6 @@ h1.page-title + .tag-cloud-list {
   -ms-transition: 0.6s;
   transition: 0.6s;
   overflow: hidden;
-  -webkit-animation: header 5s linear forwards;
-  -moz-animation: header 5s linear forwards;
-  -o-animation: header 5s linear forwards;
-  -ms-animation: header 5s linear forwards;
-  animation: header 5s linear forwards;
-  animation-timeline: view();
   background-color: transparent;
 }
 #page-header.post-bg #nav {
@@ -14190,6 +14187,11 @@ blockquote {
     background: var(--anzhiyu-background) !important;
     border: none;
   }
+}
+#post #article-container h2 {
+  border-top: 1px dashed var(--anzhiyu-theme-op);
+  padding-top: 1.5rem;
+  margin-top: 1.5rem;
 }
 #post .post_share {
   margin: 8px 0 0;
