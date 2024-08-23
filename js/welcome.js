@@ -1,11 +1,16 @@
 //get请求
-fetch('https://api.qjqq.cn/api/Local')
-    .then(response => response.json())
-    .then(data => {
-        ipLocation = data;
-        showWelcome();
-    })
-    .catch(error => console.error('Error:', error));
+$.ajax({
+    type: 'get',
+    url: 'https://api.76.al/api/ip/query',
+    data: {
+      key: 'AK6gGPMHBRBXW4yuv1y1yonVwn',  // 这里要写你的KEY!!!
+      output: 'jsonp',
+    },
+    dataType: 'jsonp',
+    success: function (res) {
+      ipLoacation = res;
+    }
+})
 
 
 function getDistance(e1, n1, e2, n2) {
