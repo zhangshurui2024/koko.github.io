@@ -1,9 +1,9 @@
 //get请求
 $.ajax({
     type: 'get',
-    url: 'https://apis.map.qq.com/ws/location/v1/ip',
+    url: 'https://api.76.al/api/ip/query',
     data: {
-        key: 'J3HBZ-FR76J-DULFU-XZEBH-JJBGF-NVF36',
+        key: 'AK6gGPMHBRBXW4yuv1y1yonVwn',
         output: 'jsonp',
     },
     dataType: 'jsonp',
