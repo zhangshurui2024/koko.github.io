@@ -1,45 +1,48 @@
 // 请填你的Key
-const apiKey = 'AK6gGPMHBRBXW4yuv1y1yonVwn'; // 将 'YOUR_API_KEY' 替换为您的实际 API 密钥
+const API_KEY = 'AK6gGPMHBRBXW4yuv1y1yonVwn';
 
-// 自动获取用户的 IP 地址
-fetch('https://api.ipify.org?format=json')
-    .then(response => response.json())
-    .then(data => {
-        const visitorIp = data.ip; // 获取用户 IP 地址
+// 获取当前IP地址（IPv4或IPv6）
+fetch('https://api.ipify.org/?format=json')
+  .then(response => response.json())
+  .then(data => {
+    const ip = data.ip; // 获取到的IP地址（IPv4或IPv6）
+    const isIPv6 = data.ip && data.ip.includes(':'); // 检查是否是IPv6地址
 
-        // 使用获取的 IP 地址发起请求
-        return fetch(`https://api.76.al/api/ip/query?key=${apiKey}&ip=${visitorIp}`);
-    })
-    .then(response => response.json())
-    .then(data => {
+    // 根据IP地址类型决定请求哪个API
+    const apiEndpoint = isIPv6 ? `https://api.76.al/api/ip/query?key=${API_KEY}&ip=${ip}` : `https://api.76.al/api/ip/query?key=${API_KEY}&ip=${ip}`;
+    
+    // 发送请求
+    fetch(apiEndpoint)
+      .then(response => response.json())
+      .then(data => {
         ipLocation = data;
         showWelcome();
-    })
-    .catch(error => console.error('Error:', error));
+      })
+      .catch(error => console.error('Error:', error));
+  })
+  .catch(error => console.error('Error:', error));
 
 function getDistance(e1, n1, e2, n2) {
-    const R = 6371; // 地球半径，单位为公里
-    const { sin, cos, asin, PI, hypot } = Math;
+  const R = 6371;
+  const { sin, cos, asin, PI, hypot } = Math;
+  let getPoint = (e, n) => {
+    e *= PI / 180;
+    n *= PI / 180;
+    return { x: cos(n) * cos(e), y: cos(n) * sin(e), z: sin(n) };
+  };
 
-    let getPoint = (e, n) => {
-        e *= PI / 180;
-        n *= PI / 180;
-        return { x: cos(n) * cos(e), y: cos(n) * sin(e), z: sin(n) };
-    };
-
-    let a = getPoint(e1, n1);
-    let b = getPoint(e2, n2);
-    let c = hypot(a.x - b.x, a.y - b.y, a.z - b.z);
-    let r = asin(c / 2) * 2 * R;
-    return Math.round(r);
+  let a = getPoint(e1, n1);
+  let b = getPoint(e2, n2);
+  let c = hypot(a.x - b.x, a.y - b.y, a.z - b.z);
+  let r = asin(c / 2) * 2 * R;
+  return Math.round(r);
 }
 
 function showWelcome() {
-    // 使用返回的 IP 地址位置数据
-    let dist = getDistance(121.413921, 31.089290, ipLocation.data.lng, ipLocation.data.lat); // 修改为你的经度和纬度
-    let pos = ipLocation.data.country;
-    let ip = ipLocation.ip;
-    let posdesc;
+  let dist = getDistance(121.413921, 31.089290, ipLocation.data.lng, ipLocation.data.lat); // 修改自己的经度（121.413921）纬度（31.089290）
+  let pos = ipLocation.data.country;
+  let ip = ipLocation.ip;
+  let posdesc; // 此处根据实际情况定义posdesc变量或逻辑
 
     // 以下的代码需要根据新API返回的结果进行相应的调整
     switch (ipLocation.data.country) {
