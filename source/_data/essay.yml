@@ -1,0 +1,27 @@
+- title: 即刻短文
+  subTitle: 咸鱼的日常生活。
+  tips: 随时随地，分享生活
+  buttonText: 关于我
+  buttonLink: /about/
+  limit: 30
+  home_essay: true
+  top_background: https://api.yimian.xyz/img?type=moe&size=1920x1080
+  essay_list:
+    - content: 歌曲推荐(depression of the summer)
+      date: 2024/08/20
+      aplayer:
+        server: tencent
+        id: 0015esmE15l09O
+    - content: 安知鱼主题指南
+      date: 2023/09/09
+      video:
+        - https://player.bilibili.com/player.html?aid=226886152&bvid=BV1Ch41137tR&cid=1081639816&p=1&autoplay=0
+    - content: 歌曲推荐
+      date: 2022/09/25
+      aplayer:
+        server: tencent
+        id: 001FGQba3i10mw
+    - content: 今天以安知鱼主题为基础成功搭建了本站！
+      date: 2024/08/01
+    - content: 今天为网站配备了为期一个月的免费CDN加速服务，由免费云加速（FreeCDN）提供。
+      date: 2024/08/18
