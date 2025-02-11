@@ -303,3 +303,8 @@
 body {
     user-select: text !important;
 }
+
+/* 卡片透明度调整 */
+#recent-posts .recent-post-item {
+    background:  #ffffff00  !important;
+}
