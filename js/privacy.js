@@ -1,6 +1,6 @@
 // 获取ip
 function getIpInfo(){
-    var fetchUrl = "https://api.76.al/api/ipv4/query?key=8n9TGaVBMTYUi8DNUR7HY0OOe5" 
+    var fetchUrl = "https://api.nsmao.net/api/ipip/query?key=8n9TGaVBMTYUi8DNUR7HY0OOe5" 
     fetch(fetchUrl)
       .then(res => res.json())
       .then(json =>{
